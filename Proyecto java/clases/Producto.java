@@ -3,11 +3,11 @@ package clases;
 public class Producto {
     private int id;
     private String titulo;
-    private String tipo; // "Cómic" o "Manga"
+    private String tipo; 
     private double precio;
     private int stock;
 
-    // Constructor
+    
     public Producto(int id, String titulo, String tipo, double precio, int stock) {
         this.id = id;
         this.titulo = titulo;
@@ -16,7 +16,7 @@ public class Producto {
         this.stock = stock;
     }
 
-    // Métodos Getter y Setter
+    
     public int getId() {
         return id;
     }
@@ -57,12 +57,12 @@ public class Producto {
         this.stock = stock;
     }
 
-    // Método para mostrar el producto
+    
     public void mostrarProducto() {
         System.out.println("ID: " + id + " | Título: " + titulo + " | Tipo: " + tipo + " | Precio: $" + precio + " | Stock: " + stock);
     }
 
-    // Método para actualizar el stock
+    
     public void actualizarStock(int cantidad) {
         this.stock += cantidad;
     }
