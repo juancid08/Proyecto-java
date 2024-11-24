@@ -39,7 +39,7 @@ public class Cliente {
         this.historialCompras = historialCompras;
     }
 
-    // Método para agregar compra al historial
+    
     public void agregarCompra(Producto producto) {
         if (numCompras < historialCompras.length) {
             historialCompras[numCompras] = producto;
