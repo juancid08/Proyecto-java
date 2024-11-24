@@ -6,15 +6,15 @@ public class Cliente {
     private Producto[] historialCompras;
     private int numCompras;
 
-    // Constructor
+    
     public Cliente(String nombre, String email) {
         this.nombre = nombre;
         this.email = email;
-        this.historialCompras = new Producto[10]; // Máximo de 10 compras en el historial.
+        this.historialCompras = new Producto[10]; 
         this.numCompras = 0;
     }
 
-    // Métodos Getter y Setter
+    
     public String getNombre() {
         return nombre;
     }
@@ -49,7 +49,7 @@ public class Cliente {
         }
     }
 
-    // Método para mostrar el historial de compras
+   
     public void mostrarHistorial() {
         if (numCompras == 0) {
             System.out.println("No tiene compras registradas.");
