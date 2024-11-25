@@ -118,27 +118,27 @@ public class TiendaComics {
     /**
      * Añade un nuevo producto al inventario de la tienda.
      */
-    private static void añadirProducto() {
+ private static void añadirProducto() {
         if (numProductos >= productos.length) {
             System.out.println("No se pueden añadir más productos, el inventario está lleno.");
-            return;
-        }
-        try {
-            System.out.print("Introduce el ID del producto: ");
-            int id = Integer.parseInt(scanner.nextLine());
-            System.out.print("Introduce el título del producto: ");
-            String titulo = scanner.nextLine();
-            System.out.print("Introduce el tipo (Cómic/Manga): ");
-            String tipo = scanner.nextLine();
-            System.out.print("Introduce el precio: ");
-            double precio = Double.parseDouble(scanner.nextLine());
-            System.out.print("Introduce el stock: ");
-            int stock = Integer.parseInt(scanner.nextLine());
-
-            productos[numProductos++] = new Producto(id, titulo, tipo, precio, stock);
-            System.out.println("Producto añadido exitosamente.");
-        } catch (NumberFormatException e) {
-            System.out.println("Entrada no válida. Intente de nuevo.");
+        } else {
+            try {
+                System.out.print("Introduce el ID del producto: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                System.out.print("Introduce el título del producto: ");
+                String titulo = scanner.nextLine();
+                System.out.print("Introduce el tipo (Cómic/Manga): ");
+                String tipo = scanner.nextLine();
+                System.out.print("Introduce el precio: ");
+                double precio = Double.parseDouble(scanner.nextLine());
+                System.out.print("Introduce el stock: ");
+                int stock = Integer.parseInt(scanner.nextLine());
+    
+                productos[numProductos++] = new Producto(id, titulo, tipo, precio, stock);
+                System.out.println("Producto añadido exitosamente.");
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada no válida. Intente de nuevo.");
+            }
         }
     }
     /**
