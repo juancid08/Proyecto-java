@@ -6,57 +6,62 @@ public class Cliente {
     private Producto[] historialCompras;
     private int numCompras;
 
-    
-    public Cliente(String nombre, String email) {
+ /**
+     * Constructor para crear un cliente.
+     * @param nombre El nombre del cliente.
+     * @param correo El correo electrónico del cliente.
+     * @param numCompras El número de compras iniciales (solo usado para ejemplos).
+     */
+    public Cliente(String nombre, String email, int maxCompras) {
         this.nombre = nombre;
         this.email = email;
-        this.historialCompras = new Producto[10]; 
+        this.historialCompras = new Producto[maxCompras];
         this.numCompras = 0;
     }
-
-    
+   /**
+     * Devuelve el nombre del cliente.
+     * @return El nombre del cliente.
+     */
     public String getNombre() {
         return nombre;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
+    /**
+     * Devuelve el email del cliente
+     * @return El email del cliente
+     */
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    /**
+     * Agrega una compra al historial del cliente.
+     * @param producto
+     */
+    public void agregarCompra(Producto producto) {
+        if (numCompras < historialCompras.length) {
+            historialCompras[numCompras++] = producto;
+        }
     }
-
+    /**
+     * Devuelve el historial de compras.
+     * @return El historial de compras.
+     */
     public Producto[] getHistorialCompras() {
         return historialCompras;
     }
-
-    public void setHistorialCompras(Producto[] historialCompras) {
-        this.historialCompras = historialCompras;
+    /**
+     * Devuelve el número de compras.
+     * @return El número de compras
+    */
+    public int getNumCompras() {
+        return numCompras;
     }
-
+    /**
+     * Devuelve una representación en cadena del cliente.
+     * @Override
+     */
     
-    public void agregarCompra(Producto producto) {
-        if (numCompras < historialCompras.length) {
-            historialCompras[numCompras] = producto;
-            numCompras++;
-        } else {
-            System.out.println("Historial de compras lleno.");
-        }
-    }
-
-   
-    public void mostrarHistorial() {
-        if (numCompras == 0) {
-            System.out.println("No tiene compras registradas.");
-        } else {
-            for (int i = 0; i < numCompras; i++) {
-                System.out.println(historialCompras[i].getTitulo());
-            }
-        }
+    public String toString() {
+        return "Nombre: " + nombre + ", Email: " + email + ", Compras realizadas: " + numCompras;
     }
 }
