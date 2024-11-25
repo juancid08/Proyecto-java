@@ -6,7 +6,7 @@ import clases.Producto;
 public class TiendaComics {
     private static Producto[] productos = new Producto[20];
     private static Cliente[] clientes = new Cliente[5];
-    private static int numProductos = 10; // Inicializamos con 10 productos
+    private static int numProductos = 10; 
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
