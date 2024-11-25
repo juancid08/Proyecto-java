@@ -118,7 +118,7 @@ public class TiendaComics {
     /**
      * Añade un nuevo producto al inventario de la tienda.
      */
- private static void añadirProducto() {
+    private static void añadirProducto() {
         if (numProductos >= productos.length) {
             System.out.println("No se pueden añadir más productos, el inventario está lleno.");
         } else {
@@ -133,7 +133,7 @@ public class TiendaComics {
                 double precio = Double.parseDouble(scanner.nextLine());
                 System.out.print("Introduce el stock: ");
                 int stock = Integer.parseInt(scanner.nextLine());
-    
+
                 productos[numProductos++] = new Producto(id, titulo, tipo, precio, stock);
                 System.out.println("Producto añadido exitosamente.");
             } catch (NumberFormatException e) {
@@ -141,6 +141,7 @@ public class TiendaComics {
             }
         }
     }
+
     /**
      * Muestra todos los productos disponibles en la tienda.
      */
@@ -247,41 +248,60 @@ public class TiendaComics {
      * Selecciona un producto del inventario.
      * @return El producto seleccionado, o null si no se selecciona ninguno.
      */
-     
     private static Producto seleccionarProducto() {
-        mostrarProductos();
+        mostrarProductos();  
         System.out.print("Introduce el ID del producto a seleccionar: ");
         int id = leerOpcion();
+        
+        Producto productoSeleccionado = null;  
+        boolean productoEncontrado = false;   
+        
+
         for (int i = 0; i < numProductos; i++) {
-            if (productos[i].getId() == id) {
-                if (productos[i].getStock() > 0) {
-                    System.out.println("Producto seleccionado: " + productos[i]);
-                    return productos[i];
+            if (productos[i].getId() == id) {  
+                if (productos[i].getStock() > 0) {  
+                    productoSeleccionado = productos[i];  
+                    productoEncontrado = true;  
                 } else {
                     System.out.println("El producto no tiene stock disponible.");
+                    productoEncontrado = true; 
                 }
             }
         }
-        System.out.println("Producto no encontrado.");
-        return null;
+    
+        if (!productoEncontrado) {
+            System.out.println("Producto no encontrado.");
+        }
+        
+        return productoSeleccionado;
     }
+    
     /**
      * Selecciona un cliente de la lista de clientes.
      * @return El cliente seleccionado, o null si no se selecciona ninguno.
      */
     private static Cliente seleccionarCliente() {
         System.out.println("\n=== Lista de Clientes ===");
+        
         for (int i = 0; i < clientes.length; i++) {
             System.out.println((i + 1) + ". " + clientes[i]);
         }
+        
         System.out.print("Selecciona un cliente por número: ");
         int indice = leerOpcion() - 1;
+        
+        Cliente clienteSeleccionado = null;
+        
+       
         if (indice >= 0 && indice < clientes.length) {
-            System.out.println("Cliente seleccionado: " + clientes[indice]);
-            return clientes[indice];
+            clienteSeleccionado = clientes[indice];  
+            System.out.println("Cliente seleccionado: " + clienteSeleccionado);
+        } else {
+            System.out.println("Cliente no válido.");
         }
-        System.out.println("Cliente no válido.");
-        return null;
+        
+        
+        return clienteSeleccionado;
     }
     /**
      * Confirma la venta, restando el stock y registrando la compra.
@@ -302,14 +322,22 @@ public class TiendaComics {
      * @param producto
      */
     private static void aplicarDescuentoAleatorio(Producto producto) {
+
+        boolean productoValido = true;
+    
         if (producto == null) {
             System.out.println("Debe seleccionar un producto antes de aplicar un descuento.");
-            return;
+            productoValido = false;  
         }
-        double descuento = Math.random() * 0.3; // Hasta un 30% de descuento
-        double precioConDescuento = producto.getPrecio() * (1 - descuento);
-        System.out.printf("Se aplicó un descuento del %.2f%%. Nuevo precio: %.2f%n", descuento * 100, precioConDescuento);
+    
+        
+        if (productoValido) {
+            double descuento = Math.random() * 0.3; 
+            double precioConDescuento = producto.getPrecio() * (1 - descuento);
+            System.out.printf("Se aplicó un descuento del %.2f%%. Nuevo precio: %.2f%n", descuento * 100, precioConDescuento);
+        }
     }
+    
     /**
      * Muestra el historial de compras de un cliente.
      * @param cliente

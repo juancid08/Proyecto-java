@@ -8,7 +8,7 @@ public class Producto {
     private double precio;
     private int stock;
 
-        /**
+    /**
      * Constructor para crear un producto.
      * @param id El ID del producto.
      * @param titulo El título del producto.
@@ -30,10 +30,7 @@ public class Producto {
     public int getId() {
         return id;
     }
-    /**
-     * 
-     * @return
-     */
+
      /**
      * Devuelve el título del producto.
      * @return El título del producto.
