@@ -54,7 +54,7 @@ public class TiendaComics {
         clientes[3] = new Cliente("Diana", "diana@example.com", 5);
         clientes[4] = new Cliente("Eve", "eve@example.com", 5);
 
-        // Agregamos compras a clientes como ejemplo
+
         clientes[0].agregarCompra(productos[0]);
         clientes[0].agregarCompra(productos[3]);
         clientes[1].agregarCompra(productos[2]);
